@@ -72,6 +72,7 @@ Deploying you project is not required, but is suggested.  This is a nice first p
 
 ### RESTful APIs
 
+* [restfulapi.net](https://restfulapi.net/)
 * [Traversy](https://www.youtube.com/watch?v=Q-BpqyOT3a8)
 * [WebConcepts](https://www.youtube.com/watch?v=7YcW25PHnAA)
 
