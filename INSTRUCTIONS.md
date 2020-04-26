@@ -70,6 +70,8 @@ Deploying you project is not required, but is suggested.  This is a nice first p
 
 [The routes available in this app](https://jsonplaceholder.typicode.com/guide.html)
 
+a refactored project to study: [this-to-fetch-example](https://github.com/hackyourfuturebelgium/this-to-fetch-example)
+
 ### RESTful APIs
 
 * [restfulapi.net](https://restfulapi.net/)
