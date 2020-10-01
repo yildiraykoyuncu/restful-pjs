@@ -3,7 +3,7 @@
 Ready for it ... fullstack!  Your project this week is to refactor your finished code from Practical JavaScript into this starter repository.  The RESTful backend is provided, you'll be making the frontend app.  It should:
 
 * Use ES6 `class`es
-* Use `fetch`
+* Use `fetch` & `async`/`await`
 * Store it's data in `db.json`
 * Be in the `/public` folder
 * Build from `/public/index.html`
@@ -39,7 +39,7 @@ To install and run the application:
 * `npm run start`
 * open `localhost:3000` in the browser
 
-That's it!  You're now ready to study `example-fetches.js` and get started on your project.
+That's it!  You're now ready to study [this-to-fetch](https://github.com/hackyourfuturebelgium/this-to-fetch-example) and get started on your project.
 
 [TOP](#restful-practical-javascript)
 
@@ -53,6 +53,7 @@ Deploying you project is not required, but is suggested.  This is a nice first p
 
 * [FCC Article](https://www.freecodecamp.org/news/how-to-deploy-a-nodejs-app-to-heroku-from-github-without-installing-heroku-on-your-machine-433bec770efe/)
 * [Heroku CI](https://www.heroku.com/continuous-integration)
+* GitHub Actions: [sites](https://duckduckgo.com/?q=deploy+node+to+heroku+github+action&atb=v214-1&ia=web), [videos](https://duckduckgo.com/?q=deploy+node+to+heroku+github+action&atb=v214-1&iax=videos&ia=videos)
 
 ### From Terminal
 
