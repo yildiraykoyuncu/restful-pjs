@@ -69,7 +69,7 @@ Deploying you project is not required, but is suggested.  This is a nice first p
 
 ## Helpful Links
 
-[The routes available in this app](https://jsonplaceholder.typicode.com/guide.html)
+* [The routes available in this app](https://jsonplaceholder.typicode.com/guide.html)
 
 ### Code to Study
 
