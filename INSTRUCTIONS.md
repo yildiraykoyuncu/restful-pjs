@@ -21,8 +21,6 @@ Ready for it ... fullstack!  Your project this week is to refactor your finished
 
 ## Understanding REST
 
-To help you figure out the RESTful API and how to use `fetch` to access your application's data, there is a file called `/public/example-fetches.js`.  Stepping through this file in the debugger a few times before starting on the project should make things simpler
-
 This project's backend is generated automatically using the [json-server](https://github.com/typicode/json-server) module, the same module that is used to run the [jsonplaceholder](https://jsonplaceholder.typicode.com) API you used in class on Sunday.  Studying the [jsonplaceholder guide](https://jsonplaceholder.typicode.com/guide.html) will be a help for this project.
 
 Another way to understand REST and API's will be to watch the `db.json` file as you develop.  If you leave it open in VSC alongside the terminal window running your server, you will be able to watch your backend "database" change in real-time.  With each request logged to the terminal, there will be live change in the .json file.
