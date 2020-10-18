@@ -1,24 +1,63 @@
-import { Todo } from './todo.js';
-import { logger } from '../../lib/logger';
+import { logger } from '../lib/logger.js';
 
 
 export class List {
     list = []
     listItem = null;
-
+    url = null;
 
     constructor(url, listItem) {
         this.listItem = listItem;
-        this.populate(data);
         this.url = url;
+        this.populate(url);
+
 
     }
 
-    async populate(url) {
+    //routes
+
+    async getAll() {
 
         try {
-            const res = await fetch(url);
-            const data = await res.json();
+            const response = await fetch(this.url)
+            const data = await response.json();
+            return await data;
+        } catch (err) {
+            console.log(err)
+        };
+
+    }
+
+    async postItem(newItem) {
+        try {
+            const res = await fetch(this.url, {
+                method: 'POST',
+                body: JSON.stringify(newItem),
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8"
+                }
+            });
+            return await res.json();
+        } catch (err) {
+            console.log(err);
+        };
+    }
+
+    async deleteItem(id) {
+        try {
+            const res = await fetch(this.url + '/' + id, {
+                method: 'DELETE'
+            });
+            return await res.json();
+        } catch (err) {
+            console.log(err);
+        };
+    }
+
+    async populate() {
+
+        try {
+            const data = await this.getAll();
             const ListItem = this.listItem
             data.forEach(todo => {
                 const text = todo.text;
@@ -28,19 +67,24 @@ export class List {
                 const newItem = new ListItem(text, estCycles, id);
                 this.list.push(newItem);
             })
+            this.render()
         } catch (err) {
             console.log(err)
         }
 
     }
 
-    addTodo() {
+    async addTodo() {
         const ListItem = this.listItem
         const text = document.getElementById('inputField').value;
         const estCycles = document.getElementById('inputNumber').value;
-        const newItem = new ListItem(text, estCycles, this.list.length);
+        const id = this.list.length + 1
+        const newItem = new ListItem(text, estCycles, id);
         this.list.push(newItem)
+
+        await this.postItem(newItem);
     }
+
 
     addTodoHandler(event) {
 
@@ -60,6 +104,24 @@ export class List {
             event
         })
 
+    }
+
+    async deleteHandler(event) {
+
+        const id = event.target.id || event.target.parentElement.id
+
+        this.list = this.list.filter(item => {
+            return !(item.id === Number(id))
+        })
+
+        await this.deleteItem(id);
+        this.render();
+
+        logger.push({
+            action: 'delete',
+            list: this.list,
+            event
+        })
     }
 
     addTodoScreenCall(event) {
@@ -114,7 +176,9 @@ export class List {
         if (this.list.length === 0) { return }
 
         const renderedTodos = this.list.map(item => {
-            return item.render();
+            const renderedItem = item.render()
+            renderedItem.addEventListener('click', this.deleteHandler.bind(this))
+            return renderedItem;
 
         }).reduce((all, next) => {
             all.appendChild(next);

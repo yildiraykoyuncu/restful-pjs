@@ -207,3 +207,10 @@ div#todo ul li {
 div#todo ul li span {
     margin-left: 6px;
 }
+
+div#todo ul li button.deleteBtn {
+    border: none;
+    color: black;
+    background: transparent;
+    float: right;
+}

@@ -1,4 +1,4 @@
-import { logger } from '../../lib/logger'
+import { logger } from '../lib/logger.js'
 export class Todo {
 
     constructor(text, estCycles = 1, id) {
@@ -25,8 +25,15 @@ export class Todo {
         const body = document.createElement('span');
         body.textContent = this.text;
 
+        const deleteButton = document.createElement('button');
+        deleteButton.type = 'button';
+        deleteButton.innerHTML = '<i class="fas fa-trash"></i>'
+        deleteButton.classList.add('deleteBtn');
+        deleteButton.id = String(this.id);
+
         li.appendChild(checkbox);
         li.appendChild(body);
+        li.appendChild(deleteButton);
         return li;
 
     }
