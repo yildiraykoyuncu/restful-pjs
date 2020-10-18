@@ -1,4 +1,4 @@
-import { logger } from '../lib/logger.js'
+import { logger } from '../../lib/logger'
 export class Todo {
 
     constructor(text, estCycles = 1, id) {
