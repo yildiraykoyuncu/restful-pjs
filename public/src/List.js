@@ -5,7 +5,7 @@ export class List {
     list = []
     listItem = null;
     url = null;
-    idCounter = 1;
+
 
     constructor(url, listItem) {
         this.listItem = listItem;
@@ -79,19 +79,32 @@ export class List {
         const ListItem = this.listItem
         const text = document.getElementById('inputField').value;
         const estCycles = document.getElementById('inputNumber').value;
-        const id = this.idCounter;
-        this.idCounter += 1;
-        const newItem = new ListItem(text, estCycles, id);
-        this.list.push(newItem)
+        // const id = this.idCounter;
+        // this.idCounter += 1;
+        const response = await fetch('/nextId/1');
+        const idObj = await response.json()
+        const id = idObj.nextID;
 
+        const newItem = new ListItem(text, estCycles, id);
+        this.list.push(newItem);
         await this.postItem(newItem);
+
+        idObj.nextID += 1;
+
+        await fetch('/nextId/1', {
+            method: 'PUT',
+            body: JSON.stringify(idObj),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
     }
 
 
-    addTodoHandler(event) {
+    async addTodoHandler(event) {
 
         if (event.target.id === 'saveBtn') {
-            this.addTodo()
+            await this.addTodo()
             this.render();
         } else if (event.target.id === 'cancelBtn') {
             this.render();

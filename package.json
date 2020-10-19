@@ -4,7 +4,7 @@
     "description": "",
     "main": "",
     "scripts": {
-        "start": "node server.js"
+        "start": "json-server --watch db.json"
     },
     "author": "@hackyourfuturebelgium",
     "license": "CC BY-SA",
