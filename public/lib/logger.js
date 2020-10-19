@@ -19,6 +19,6 @@ export const logger = {
     push: function(logEntry) {
         const entryCopy = deepClone(logEntry);
         this._logs.push(entryCopy);
-        console.log(this._logs)
+        console.log(this.logs)
     }
 };

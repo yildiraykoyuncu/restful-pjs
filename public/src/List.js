@@ -5,6 +5,7 @@ export class List {
     list = []
     listItem = null;
     url = null;
+    idCounter = 1;
 
     constructor(url, listItem) {
         this.listItem = listItem;
@@ -78,7 +79,8 @@ export class List {
         const ListItem = this.listItem
         const text = document.getElementById('inputField').value;
         const estCycles = document.getElementById('inputNumber').value;
-        const id = this.list.length + 1
+        const id = this.idCounter;
+        this.idCounter += 1;
         const newItem = new ListItem(text, estCycles, id);
         this.list.push(newItem)
 
@@ -107,6 +109,8 @@ export class List {
     }
 
     async deleteHandler(event) {
+
+        if (!event.target.classList.contains('fa-trash')) return
 
         const id = event.target.id || event.target.parentElement.id
 
